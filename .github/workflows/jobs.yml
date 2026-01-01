@@ -20,6 +20,6 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Show phpinfo as TEXT
-        run: ./vendor/bin/phpinfo --text
+        run: ./bin/phpinfo --text
       - name: Show phpinfo as JSON
-        run: ./vendor/bin/phpinfo --json
+        run: ./bin/phpinfo --json
