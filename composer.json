@@ -1,0 +1,24 @@
+{
+  "name": "tebe/phpinfo",
+  "description": "Extends the phpinfo function and provides a structured output format using JSON.",
+  "type": "library",
+  "keywords": [
+    "php",
+    "phpinfo",
+    "json"
+  ],
+  "homepage": "https://github.com/tebe/phpinfo",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.4",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "files": [
+      "src/phpinfo.php"
+    ]
+  },
+  "bin": [
+    "bin/phpinfo"
+  ]
+}
