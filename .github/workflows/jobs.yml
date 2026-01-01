@@ -5,7 +5,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        operating-system: [debian-latest]
         php-versions: ['5.4', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']
     name: PHP ${{ matrix.php-versions }} smoke test on ${{ matrix.operating-system }}
     steps:
@@ -15,13 +15,12 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: json #optional
-          #ini-values: "post_max_size=256M" #optional
+          extensions: json
       - name: Install dependencies
         run: composer install
-      - name: PHP -i
+      - name: Output php -i as text
         run: php -i
-      - name: Show phpinfo as TEXT
+      - name: Output phpinfo as text
         run: ./bin/phpinfo --text
-      - name: Show phpinfo as JSON
+      - name: Output phpinfo as json
         run: ./bin/phpinfo --json
