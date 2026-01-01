@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$outputFlags = in_array('--json', $argv) ? INFO_OUTPUT_JSON : INFO_OUTPUT_TEXT;
+
+tebe\phpinfo(INFO_ALL, $outputFlags);
