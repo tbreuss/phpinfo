@@ -2,14 +2,17 @@
 
 Wraps the `phpinfo` function and provides a more structured output format using HTML, TEXT, and JSON.
 Supports all PHP versions from 5.4 onwards.
+Smoke tested with all PHP versions on lastest Ubuntu.
 
-Install
+## Installation
 
 ~~~bash
 composer require tebe/phpinfo
 ~~~
 
-**Web**
+## Usage
+
+**Web with HTML output**
 
 ~~~php
 <?php
@@ -19,7 +22,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 tebe\phpinfo();
 ~~~ 
 
-**CLI**
+**CLI with different text outputs**
 
 Text output
 
@@ -34,4 +37,4 @@ JSON output
 ./vendor/bin/phpinfo --json
 ~~~
 
-Thanks to https://www.reddit.com/user/HolyGonzo/.
+Credits to https://www.reddit.com/user/HolyGonzo/.
