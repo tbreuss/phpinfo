@@ -105,7 +105,7 @@ function phpinfo($flags = INFO_ALL, $outputFlags = NULL)
             }
         }
 
-        echo json_encode(array_values($data), JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
+        echo json_encode(array_values($data), JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) . "\n";
 
         return true;
     }

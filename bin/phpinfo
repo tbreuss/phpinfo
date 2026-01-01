@@ -5,8 +5,26 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+// detect and require autoloader from different contexts
+if (isset($GLOBALS['_composer_autoload_path'])) {
+    require_once $GLOBALS['_composer_autoload_path'];
 
-$outputFlags = in_array('--json', $argv) ? INFO_OUTPUT_JSON : INFO_OUTPUT_TEXT;
+    unset($GLOBALS['_composer_autoload_path']);
+} else {
+    foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+        if (file_exists($file)) {
+            require_once $file;
+            break;
+        }
+    }
+    unset($file);
+}
 
-tebe\phpinfo(INFO_ALL, $outputFlags);
+$outputFlags = NULL;
+if (in_array('--json', $argv)) {
+    $outputFlags = INFO_OUTPUT_JSON;
+} else {
+    $outputFlags = INFO_OUTPUT_TEXT;
+}
+
+tebe\phpinfo(INFO_ALL^INFO_CREDITS, $outputFlags); // all except credits like in "php -i"
