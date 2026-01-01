@@ -19,6 +19,8 @@ jobs:
           #ini-values: "post_max_size=256M" #optional
       - name: Install dependencies
         run: composer install
+      - name: PHP -i
+        run: php -i
       - name: Show phpinfo as TEXT
         run: ./bin/phpinfo --text
       - name: Show phpinfo as JSON
